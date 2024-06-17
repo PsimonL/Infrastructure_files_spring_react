@@ -14,3 +14,17 @@ To run use
 ```
 kubectl apply -f kubernetes/
 ```
+
+## Images build process:
+```
+docker login
+
+docker build -t server-side:latest .
+docker build -t client-side:latest .
+
+docker tag server-side:latest srpl/server-side:1.0.0
+docker tag client-side:latest srpl/client-side:1.0.0
+
+docker push srpl/server-side:1.0.0
+docker push srpl/client-side:1.0.0
+```

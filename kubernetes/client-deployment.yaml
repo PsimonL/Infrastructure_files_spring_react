@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client
+  namespace: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client
+  template:
+    metadata:
+      labels:
+        app: client
+    spec:
+      containers:
+      - name: client
+        image: mydockerhubusername/client-image:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: REACT_APP_SERVER_URL
+          value: http://server-service.myapp.svc.cluster.local:8080

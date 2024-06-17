@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server
+  namespace: myapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server
+  template:
+    metadata:
+      labels:
+        app: server
+    spec:
+      containers:
+      - name: server
+        image: mydockerhubusername/server-image:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: jdbc:mysql://mysql-service:3306/mydb
+        - name: SPRING_DATASOURCE_USERNAME
+          value: username
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: password

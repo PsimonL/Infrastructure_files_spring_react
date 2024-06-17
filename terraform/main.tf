@@ -77,15 +77,15 @@ resource "kubernetes_deployment" "server" {
         }
       }
       spec {
-        containers {
+        container {
           name  = "server"
-          image = "mydockerhubusername/server-image:latest"
-          ports {
+          image = "srpl/server-side:1.0.0"
+          port {
             container_port = 8080
           }
           env {
             name  = "SPRING_DATASOURCE_URL"
-            value = "jdbc:mysql://mysql-service:3306/mydb"
+            value = "jdbc:postgresql://<DB_ADDRESS>:5432/<DB_NAME>"
           }
           env {
             name  = "SPRING_DATASOURCE_USERNAME"
@@ -110,7 +110,7 @@ resource "kubernetes_service" "server" {
     selector = {
       app = "server"
     }
-    ports {
+    port {
       protocol = "TCP"
       port     = 8080
       target_port = 8080
@@ -138,10 +138,10 @@ resource "kubernetes_deployment" "client" {
         }
       }
       spec {
-        containers {
+        container {
           name  = "client"
-          image = "mydockerhubusername/client-image:latest"
-          ports {
+          image = "srpl/client-side:1.0.0"
+          port {
             container_port = 3000
           }
           env {
@@ -163,7 +163,7 @@ resource "kubernetes_service" "client" {
     selector = {
       app = "client"
     }
-    ports {
+    port {
       protocol = "TCP"
       port     = 3000
       target_port = 3000

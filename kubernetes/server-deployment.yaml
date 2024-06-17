@@ -22,9 +22,9 @@ spec:
         - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://<DB_ADDRESS>:5432/<DB_NAME>
         - name: SPRING_DATASOURCE_USERNAME
-          value: username
+          value: <USERNAME>
         - name: SPRING_DATASOURCE_PASSWORD
-          value: password
+          value: <PASSWORD>
         resources:
           limits:
             memory: "512Mi"

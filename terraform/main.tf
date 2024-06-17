@@ -89,11 +89,11 @@ resource "kubernetes_deployment" "server" {
           }
           env {
             name  = "SPRING_DATASOURCE_USERNAME"
-            value = "username"
+            value = "<USERNAME>"
           }
           env {
             name  = "SPRING_DATASOURCE_PASSWORD"
-            value = "password"
+            value = "<PASSWORD>"
           }
         }
       }

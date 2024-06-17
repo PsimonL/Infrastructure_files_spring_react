@@ -1,0 +1,7 @@
+serviceprinciple_id     = "PROVIDED_SERVICE_PRINCIPAL_ID"
+serviceprinciple_key    = "PROVIDED_SERVICE_PRINCIPAL_KEY"
+tenant_id               = "PROVIDED_TENANT_ID"
+subscription_id         = "PROVIDED_SUBSCRIPTION_ID"
+ssh_key                 = "PROVIDED_SSH_KEY"
+location                = "East US"
+kubernetes_version      = "1.22.2"

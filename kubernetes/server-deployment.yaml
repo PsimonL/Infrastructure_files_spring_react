@@ -15,13 +15,20 @@ spec:
     spec:
       containers:
       - name: server
-        image: mydockerhubusername/server-image:latest
+        image: srpl/server-side:1.0.0
         ports:
         - containerPort: 8080
         env:
         - name: SPRING_DATASOURCE_URL
-          value: jdbc:mysql://mysql-service:3306/mydb
+          value: jdbc:postgresql://<DB_ADDRESS>:5432/<DB_NAME>
         - name: SPRING_DATASOURCE_USERNAME
           value: username
         - name: SPRING_DATASOURCE_PASSWORD
           value: password
+        resources:
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
